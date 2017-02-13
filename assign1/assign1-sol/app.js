@@ -17,7 +17,7 @@
     // to give the input. If the number of input items is larger or equal
     // to 3, show 'Enjoy!', otherwise show 'Too much!'.
     $scope.performCheck = function() {
-      if (!$scope.inputString) {
+      if (!$scope.lunch.inputString) {
         $scope.lunch.notification = 'Please enter data first';
         $scope.lunch.inputType = "invalid";
       } else {
