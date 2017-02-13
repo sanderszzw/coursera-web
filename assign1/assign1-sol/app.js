@@ -19,24 +19,24 @@
     $scope.performCheck = function() {
       if (!$scope.inputString) {
         $scope.lunch.notification = 'Please enter data first';
-        $scope.lunch.inputType = "invalid"
+        $scope.lunch.inputType = "invalid";
       } else {
-        $scope.lunch.inputType = "valid"
+        $scope.lunch.inputType = "valid";
         var itemArray = $scope.inputString.split(',')
 
         // count valid items
-        var numberOfValidItems = 0
+        var numberOfValidItems = 0;
         for (var i = 0; i < itemArray.length; i++) {
           if (itemArray[i].trim().length != 0) {
-            numberOfValidItems += 1
+            numberOfValidItems += 1;
           }
         }
 
         // output message
         if (numberOfValidItems <= 3) {
-          $scope.lunch.notification = 'Enjoy!'
+          $scope.lunch.notification = 'Enjoy!';
         } else {
-          $scope.lunch.notification = 'Too much!'
+          $scope.lunch.notification = 'Too much!';
         }
       }
     }
