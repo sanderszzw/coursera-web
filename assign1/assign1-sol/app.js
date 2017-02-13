@@ -22,7 +22,7 @@
         $scope.lunch.inputType = "invalid";
       } else {
         $scope.lunch.inputType = "valid";
-        var itemArray = $scope.inputString.split(',');
+        var itemArray = $scope.lunch.inputString.split(',');
 
         // count valid items
         var numberOfValidItems = 0;
