@@ -34,6 +34,7 @@
 
     menu.find = function() {
       if (menu.key === '') {
+        menu.found = [];
         menu.message = 'Nothing found';
         return;
       }
