@@ -43,6 +43,8 @@
         menu.found = response;
         if (menu.found.length === 0) {
           menu.message = 'Nothing found';
+        } else {
+          menu.message = '';
         }
       })
       .catch(function(error) {
@@ -70,7 +72,7 @@
         var items = result.data.menu_items;
         for (var i = 0; i < items.length; i++) {
           var des = items[i].description;
-          if (des.toLowerCase().indexOf(key) !== -1) {
+          if (des.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
             res.push(items[i])
           }
         }
