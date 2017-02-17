@@ -4,7 +4,7 @@
   angular.module('NarrowItDownApp', [])
   .controller('NarrowItDownController', NarrowItDownController)
   .service('MenuSearchService', MenuSearchService)
-  .constant('ApiBasePath', "http://davids-restaurant.herokuapp.com")
+  .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com")
   .directive('foundItems', foundItems);
 
 
@@ -34,6 +34,7 @@
 
     menu.find = function() {
       if (menu.key === '') {
+        menu.found = [];
         menu.message = 'Nothing found';
         return;
       }
@@ -42,6 +43,8 @@
         menu.found = response;
         if (menu.found.length === 0) {
           menu.message = 'Nothing found';
+        } else {
+          menu.message = '';
         }
       })
       .catch(function(error) {
@@ -69,7 +72,7 @@
         var items = result.data.menu_items;
         for (var i = 0; i < items.length; i++) {
           var des = items[i].description;
-          if (des.toLowerCase().indexOf(key) !== -1) {
+          if (des.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
             res.push(items[i])
           }
         }
