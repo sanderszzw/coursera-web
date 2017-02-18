@@ -7,7 +7,7 @@
   .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com")
   .directive('foundItems', foundItems);
 
-
+  // customized directive
   function foundItems () {
     var ddo = {
       templateUrl:'foundItems.html',
@@ -23,8 +23,13 @@
   }
 
   function foundItemsDirectiveController() {
+    // no directive controller function yet
   }
 
+  // NarrowItDownController has two functions:
+  // find() function will call MenuSearchService.getMatchedMenuItems to
+  // fetch the matched items; removeItem() function will call
+  // MenuSearchService.removeItem(index) to remove a specific item in the list
   NarrowItDownController.$inject = ['MenuSearchService'];
   function NarrowItDownController(MenuSearchService) {
     var menu = this;
@@ -33,14 +38,11 @@
     menu.message = ''
 
     menu.find = function() {
-      if (menu.key === '') {
-        menu.found = [];
-        menu.message = 'Nothing found';
-        return;
-      }
       var promise = MenuSearchService.getMatchedMenuItems(menu.key);
       promise.then(function(response) {
         menu.found = response;
+        menu.found = MenuSearchService.getItems();
+
         if (menu.found.length === 0) {
           menu.message = 'Nothing found';
         } else {
@@ -53,14 +55,25 @@
     };
 
     menu.removeItem = function(idx) {
-      menu.found.splice(idx,1);
+      MenuSearchService.removeItem(idx);
     }
 
   }
 
+  // MenuSearchService provide interface to get matched items; remove a
+  // specific item given an index;
   MenuSearchService.$inject = ['$http', 'ApiBasePath'];
   function MenuSearchService($http, ApiBasePath) {
     var service = this;
+    var res = []
+
+    service.getItems = function() {
+      return res;
+    }
+
+    service.removeItem = function(index) {
+      res.splice(index, 1);
+    }
 
     service.getMatchedMenuItems = function (key) {
       return $http({
@@ -68,7 +81,10 @@
         url: (ApiBasePath + "/menu_items.json")
       })
       .then(function (result) {
-        var res = [];
+        res = [];
+        if (key.length === 0) {
+          return
+        }
         var items = result.data.menu_items;
         for (var i = 0; i < items.length; i++) {
           var des = items[i].description;
@@ -76,7 +92,6 @@
             res.push(items[i])
           }
         }
-        return res;
       });
     };
   }
