@@ -1,6 +1,7 @@
-(function () {
 'use strict';
 
-angular.module('MenuApp', ['data','ui.router']);
+(function () {
+
+  angular.module('MenuApp', ['data','ui.router','Spinner']);
 
 })();

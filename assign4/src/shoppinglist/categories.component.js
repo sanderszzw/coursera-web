@@ -1,12 +1,13 @@
-(function () {
 'use strict';
 
-angular.module('ShoppingList')
-.component('shoppingList', {
-  templateUrl: 'src/shoppinglist/templates/shoppinglist.template.html',
-  bindings: {
-    items: '<'
-  }
-});
+(function () {
+
+  angular.module('MenuApp')
+  .component('categoriesList', {
+    templateUrl: 'src/shoppinglist/templates/categories.template.html',
+    bindings: {
+      cates: '<'
+    }
+  });
 
 })();
