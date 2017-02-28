@@ -27,10 +27,7 @@
         method: "GET",
         url: (ApiPath + '/menu_items/' + shortName + '.json')
       });
-      // .then(function (res) {
-      //   console.log('searchUserFavorite', res.data);
-      //   return res.data;
-      // });
+      //then
     };
   }
 
