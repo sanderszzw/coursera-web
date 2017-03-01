@@ -3,27 +3,23 @@
   <legend>Registration</legend>
   <form name='regForm' novalidate>
 
-    <input type="text" name="username" placeholder="Pick a username"
+    <input type="text" name="username" placeholder="First and Last Name"
       ng-model="registerCtrl.user.username"
       required
-      minlength="4"
-      ng-maxlength="10">
+      minlength="1">
       <span
         ng-if="(regForm.username.$error.minlength || regForm.username.$error.required) && regForm.username.$touched">
-        Username must be at least 4 characters long
+          Name must be at least 1 character long
       </span>
-      <span ng-if="regForm.username.$error.maxlength && regForm.username.$touched">
-        Username must not be longer than 10 characters
-      </span>
+
       <br>
 
-    <!-- <input type="email" name="email" placeholder="Email"
-      ng-model="registerCtrl.user.email"
-      required>
+    <input type="email" name="email" placeholder="Email"
+      ng-model="registerCtrl.user.email">
       <span ng-if="regForm.email.$invalid && regForm.email.$touched">
         Must be a valid email address: handle@domain format
       </span>
-      <br> -->
+      <br>
 
     <input type="text" name="phone" placeholder="Phone ###-###-####"
       ng-model="registerCtrl.user.phone"
@@ -33,23 +29,19 @@
       </span>
       <br>
 
-    <input type="text" name="favorite" placeholder="Favorite food type. e.g. L"
+    <input type="text" name="favorite" placeholder="Favorite dish. e.g. A1"
       ng-model="registerCtrl.user.favorite"
-      required>
+      ng-change="registerCtrl.checkDish();">
+      {{registerCtrl.checkDishMessage}}
       <br>
 
     <button
       ng-disabled="regForm.$invalid"
       ng-click="registerCtrl.submit()">Submit</button>
 
-      <div style="margin-top: 10px;">
-        Information valid?  {{ regForm.$valid }}
-      </div>
   </form>
 </fieldset>
 
-<div id="info" ng-if="reg.completed">
-  Username: {{ reg.user.username}} <br>
-  Email: {{ reg.user.email}} <br>
-  Phone: {{ reg.user.phone }}
+<div ng-if="registerCtrl.completed">
+  {{registerCtrl.message}}
 </div>

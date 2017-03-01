@@ -198,7 +198,7 @@ h3.menu-item-title {
 
 
 legend {
-  color: black;
+  color: white;
 }
 
 input {
@@ -206,7 +206,13 @@ input {
   font-size: 24px;
   margin-bottom: 10px;
 }
+
+
+button:disabled {
+  color: white;
+}
+
 button {
-  color: black;
   font-size: 24px;
+  color: black;
 }
