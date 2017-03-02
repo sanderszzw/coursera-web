@@ -1,24 +1,21 @@
-"use strict";
+'use strict';
 
 (function () {
 
-
   angular.module('public')
-  .service('userService', userService);
+  .service('UserService', UserService);
 
-
-  userService.$inject = ['$http', 'ApiPath'];
-  function userService($http, ApiPath) {
+  UserService.$inject = ['$http', 'ApiPath'];
+  function UserService($http, ApiPath) {
+    var service = this;
     var info = {};
     var favDish = {};
-    var service = this;
 
     service.getUserInfo = function () {
       return info;
     };
 
     service.getUserDish = function () {
-      console.log(favDish);
       return favDish;
     };
 
@@ -28,12 +25,11 @@
 
     service.searchUserFavorite = function (shortName) {
       return $http({
-        method: "GET",
+        method: 'GET',
         url: (ApiPath + '/menu_items/' + shortName + '.json')
       })
       .then(function (res) {
-        //save user's fav dish
-        favDish = res.data;
+        favDish = res.data; //save user's fav dish
       });
     };
   }

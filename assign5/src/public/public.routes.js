@@ -28,7 +28,7 @@
         resolve: {
           menuCategories: ['MenuService', function (MenuService) {
             return MenuService.getCategories().then(function (res) {
-              return res
+              return res;
            });
           }]
         }
@@ -41,7 +41,7 @@
         resolve: {
           menuItems: ['$stateParams','MenuService', function ($stateParams, MenuService) {
             return MenuService.getMenuItems($stateParams.category).then(function (res) {
-              return res
+              return res;
            });
           }]
         }
