@@ -57,7 +57,6 @@ describe('Shoppinglist register tests', function () {
     var UserService;
     var $httpBackend;
     var ApiPath;
-    // https://zzw-food.herokuapp.com
 
     beforeEach(function () {
       module('public');

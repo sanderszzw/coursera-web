@@ -27,7 +27,7 @@
       var res = $http({
         method: 'GET',
         url: (ApiPath + '/menu_items/' + shortName + '.json')
-      })
+      });
       res.then(function (res) {
         favDish = res.data; //save user's fav dish
       });
