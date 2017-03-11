@@ -5,14 +5,17 @@
   angular.module('public')
   .controller('RegisterController', RegisterController);
 
-  RegisterController.$inject = ['UserService','$scope'];
-  function RegisterController(UserService, $scope) {
+  RegisterController.$inject = ['UserService'];
+  function RegisterController(UserService) {
     var reg = this;
     reg.user = {};
     reg.message = '';
     reg.checkDishMessage = '';
     reg.dishValid = false;
 
+    reg.test1 = function () {
+      return 'test1';
+    };
     //retrive registered user
     reg.registeredUser = UserService.getUserInfo();
     if (reg.registeredUser.username) {
@@ -20,7 +23,8 @@
     }
 
     reg.checkDish = function () {
-      return UserService.searchUserFavorite(reg.user.favorite).then(function (res) {
+      var res = UserService.searchUserFavorite(reg.user.favorite);
+      res.then(function (res) {
         reg.checkDishMessage = 'Item found';
         reg.dishValid = true;
         return true;
@@ -29,6 +33,7 @@
         reg.dishValid = false;
         return false;
       });
+      return res;
     };
 
     //style 1
