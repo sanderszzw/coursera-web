@@ -24,14 +24,12 @@
     };
 
     service.searchUserFavorite = function (shortName) {
-      var res = $http({
-        method: 'GET',
-        url: (ApiPath + '/menu_items/' + shortName + '.json')
-      });
-      res.then(function (res) {
-        favDish = res.data; //save user's fav dish
-      });
-      return res;
+
+			return $http.get(ApiPath + '/menu_items/' + shortName + '.json').then(function (response) {
+				favDish = response.data;
+				return response.data;
+			});
+
     };
   }
 
