@@ -1,4 +1,9 @@
+// Code here will be linted with JSHint.
+/* jshint ignore:start */
+
 'use strict';
+
+
 describe('Shoppinglist register tests', function () {
   describe("Register Controller Test", function() {
 
