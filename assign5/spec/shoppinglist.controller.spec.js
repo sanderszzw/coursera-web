@@ -72,7 +72,7 @@ describe('Shoppinglist register tests', function () {
       $httpBackend.whenGET(addr).respond(['searchUserFavorite']);
       UserService.searchUserFavorite(favoriteMock).then(function (res) {
         // console.log(res);
-        expect(res.data).toEqual(['searchUserFavorite']);
+        expect(res).toEqual(['searchUserFavorite']);
       });
       $httpBackend.flush();
     });
