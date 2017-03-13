@@ -1,0 +1,33 @@
+{
+  "browser": true,
+  "devel": true,
+  "jquery": true,
+  "jasmine": true,
+  "mocha": true,
+
+  "globalstrict": true,
+
+  "indent" : 2,
+  "bitwise" : true,
+  "trailing" : true,
+  "curly" : true,
+  "eqeqeq" : true,
+  "undef" : true,
+  "immed" : true,
+  "quotmark": "single",
+
+  "predef": [
+    "require",
+    "module",
+    "browser",
+    "element",
+    "by",
+
+    "angular",
+    "inject",
+    "prettyCron",
+    "protractor",
+    "specRootRequire",
+    "Mousetrap"
+  ]
+}
